@@ -1,0 +1,39 @@
+ <html>
+	<head>
+		<title> motivational app by shifa </title>
+		<style>
+			*{font-size:40px; font-family: Times New Roman;}
+			body{background-color: PeachPuff;}
+			h1{color:maroon;border:solid; width:70%; border-radius: 40px;}
+			h2{color:maroon;border:solid; width:70%; border-radius: 40px;}	
+			input[type=submit]{background-color:peachpuff;color:maroon;}
+		</style>
+	</head>
+
+	<body>
+		<center>
+			<h1> ~ MOTIVATIONAL APP ~ </h1>
+			<form onsubmit="mess()">
+				<input type="submit" value="get message"/>
+			</form>
+			<h2 id="msg" />
+			<h2 id="aut" />
+			<script>
+				function mess()
+				{
+					event.preventDefault();
+					let msg=document.getElementById("msg");
+					let aut=document.getElementById("aut");
+					let url="https://quotes-api-self.vercel.app/quote";
+
+					fetch(url)
+					.then(res=>res.json())
+					.then(data=>{
+						msg.innerHTML=data.quote;
+						aut.innerHTML=data.author;
+					})
+				}
+			</script>
+		</center>
+	</body>
+</html>
